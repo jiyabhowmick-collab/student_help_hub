@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="home-bg">
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div>
+        <a href="/home">Home</a>
+        <a href="/calendar">Calendar</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+    </div>
+
+    <div class="nav-right">
+        <!-- 🌙 Theme Toggle -->
+        <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<!-- WELCOME -->
+<h1 style="text-align:center; margin-top:40px; font-size:32px;">
+    Welcome {{ user.username }} 👋
+</h1>
+
+<!-- MAIN CONTAINER -->
+<div class="container">
+    <div class="grid">
+
+        <!-- TASK CARD -->
+        <div class="card">
+            <h3>Tasks</h3>
+
+            <form method="POST" action="/add_task">
+                <input name="task" placeholder="Enter task">
+                <input type="date" name="deadline">
+                <button>Add</button>
+            </form>
+
+            <table border="1" style="width:100%; border-collapse: collapse; margin-top:15px;">
+                <tr>
+                    <th>Task</th>
+                    <th>Created At</th>
+                    <th>Deadline</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+
+                {% for t in tasks %}
+                <tr>
+                    <td>
+                        {% if t.status == 1 %}
+                            <span style="text-decoration: line-through; color: gray;">
+                                {{ t.task_name }}
+                            </span>
+                        {% else %}
+                            {{ t.task_name }}
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        {{ t.created_at.strftime("%d %b %Y, %I:%M %p") }}
+                    </td>
+
+                    <td>
+                        {% if t.deadline %}
+                            {{ t.deadline.strftime("%d %b %Y") }}
+                        {% else %}
+                            No deadline
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        <a href="/toggle_task/{{t.id}}">
+                            {% if t.status == 1 %}
+                                ✅ Completed
+                            {% else %}
+                                🔵 Pending
+                            {% endif %}
+                        </a>
+                    </td>
+
+                    <td>
+                        <a href="/delete_task/{{t.id}}">❌</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <!-- NOTES CARD -->
+        <div class="card">
+            <h3>Notes</h3>
+
+            <form method="POST" action="/add_note">
+                <input name="note" placeholder="Write a note">
+                <button>Add</button>
+            </form>
+
+            {% for n in notes %}
+                <p>
+                    {{ n.note_text }}
+                    <a href="/delete_note/{{n.id}}">❌</a>
+                </p>
+            {% endfor %}
+        </div>
+
+        <!-- CART CARD -->
+        <div class="card">
+            <h3>Cart</h3>
+
+            <form method="POST" action="/add_cart">
+                <input name="product" placeholder="Add item">
+                <button>Add</button>
+            </form>
+
+            {% for c in cart %}
+                <p>
+                    {{ c.product_name }}
+                    <a href="/delete_cart/{{c.id}}">❌</a>
+                </p>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+<!-- THEME SCRIPT -->
+<script>
+function toggleTheme() {
+    let body = document.body;
+    let btn = document.getElementById("themeToggle");
+
+    body.classList.toggle("light-mode");
+
+    if (body.classList.contains("light-mode")) {
+        btn.innerHTML = "☀️";
+        localStorage.setItem("theme", "light");
+    } else {
+        btn.innerHTML = "🌙";
+        localStorage.setItem("theme", "dark");
+    }
+}
+
+window.onload = function() {
+    let savedTheme = localStorage.getItem("theme");
+    let btn = document.getElementById("themeToggle");
+
+    if (savedTheme === "light") {
+        document.body.classList.add("light-mode");
+        btn.innerHTML = "☀️";
+    } else {
+        btn.innerHTML = "🌙";
+    }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body class="forgot-bg">
+
+    <div class="auth-box">
+        <h2>Reset Password 🔐</h2>
+
+        <form method="POST">
+            <div class="input-group">
+                <i class="fa-solid fa-envelope icon"></i>
+                <input type="email" name="email" placeholder="Enter Email" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fa-solid fa-lock icon"></i>
+
+                <input type="password" id="password" name="password" required>
+
+                <i class="fa-solid fa-eye toggle-password" onclick="togglePassword()"></i>
+            </div>
+
+            <button>Update</button>
+        </form>
+
+        <p class="auth-switch">
+            Back to
+            <a href="/login">Login</a>
+        </p>
+    </div>
+
+    <script>
+        function toggle() {
+            let p = document.getElementById("password");
+            p.type = p.type === "password" ? "text" : "password";
+        }
+    </script>
+    <script>
+        function togglePassword() {
+            const password = document.getElementById("password");
+            const icon = document.querySelector(".toggle-password");
+
+            if (password.type === "password") {
+                password.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                password.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        }
+    </script>
+
+</body>
+
+</html>

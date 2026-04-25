@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Verify OTP</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="forgot-bg">
+
+<div class="auth-box">
+    <h2>Enter OTP</h2>
+
+    <form method="POST">
+        <input type="text" name="otp" placeholder="Enter OTP" required>
+        <input type="password" name="password" placeholder="New Password" required>
+        <button>Verify & Reset</button>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="home-bg">
+
+<div class="navbar">
+    <div>
+        <a href="/home">Home</a>
+        <a href="/calendar">Calendar</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+    </div>
+    <a href="/logout">Logout</a>
+</div>
+
+<h1 style="text-align:center; margin-top:30px;">📅 Task Calendar</h1>
+
+<div class="calendar-grid">
+
+    {% for day, tasks in calendar_data.items() %}
+    <div class="calendar-card">
+        <h3>{{ day }}</h3>
+
+        {% for t in tasks %}
+        <div class="task-item 
+            {% if t.status == 1 %} done 
+            {% elif t.deadline and t.deadline < current_date %} overdue 
+            {% endif %}">
+
+            <strong>{{ t.task_name }}</strong><br>
+
+            <small>
+                Deadline:
+                {% if t.deadline %}
+                    {{ t.deadline.strftime("%d %b") }}
+                {% else %}
+                    No deadline
+                {% endif %}
+            </small>
+
+            <br>
+
+            {% if t.status == 1 %}
+                <span class="status done">✅ Completed</span>
+            {% else %}
+                <span class="status pending">🔵 Pending</span>
+            {% endif %}
+
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

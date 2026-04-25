@@ -1,0 +1,386 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ===== BODY ===== */
+body {
+  min-height: 100vh;
+  color: white;
+}
+
+/* ===== BACKGROUNDS ===== */
+.login-bg {
+  background: url('/static/images/login.jpg') center/cover no-repeat;
+}
+
+.register-bg {
+  background: url('/static/images/register.jpg') center/cover no-repeat;
+}
+
+.forgot-bg {
+  background: url('/static/images/forgot.jpg') center/cover no-repeat;
+}
+
+.about-bg {
+  background: url('/static/images/about.jpg') center/cover no-repeat;
+}
+
+.home-bg {
+  background: url('/static/images/home.jpg') center/cover no-repeat;
+}
+
+/* ===== VIDEO ===== */
+#bg-video {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.35); /* lighter overlay */
+  z-index: -1;
+}
+
+/* ===== AUTH BOX ===== */
+.auth-box {
+  width: 360px;
+  margin: 80px auto;
+  padding: 30px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 15px;
+  backdrop-filter: blur(12px);
+  text-align: left;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+}
+
+/* ===== INPUT ===== */
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+.eye {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 5;
+}
+
+/* ===== BUTTON ===== */
+button {
+  width: 100%;
+  padding: 10px;
+  background: #667eea;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #5a67d8;
+  box-shadow: 0 0 10px #667eea;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+}
+
+.navbar a {
+  color: white;
+  margin-right: 15px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.navbar a:hover {
+  color: #ffd369;
+}
+
+/* ===== DASHBOARD ===== */
+.container {
+  padding: 40px;
+  text-align: center;
+}
+
+.container h1 {
+  margin-bottom: 30px;
+}
+
+/* ===== GRID ===== */
+.grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* ===== CARD ===== */
+.card {
+  background: rgba(255,255,255,0.95);
+  color: black;
+  padding: 20px;
+  border-radius: 15px;
+  width: 95%;
+  max-width: 1200px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.03);
+}
+
+/* ===== PASSWORD STRENGTH ===== */
+#strength {
+  font-size: 14px;
+  margin-top: 5px;
+}
+.about-bg .auth-box {
+  background: rgba(0,0,0,0.75);
+}
+
+.about-bg h1 {
+  color: white;
+  font-size: 32px;
+}
+
+.about-bg p {
+  color: #f1f1f1;
+}
+.input-group {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.input-group input {
+    width: 100%;
+    padding: 10px 40px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.input-group .icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+}
+
+.input-group .eye {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.input-group .eye i {
+    color: black; /* 👈 fixes white issue */
+}
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #45a049;
+}
+/* ===== AUTH SWITCH LINKS ===== */
+.auth-switch {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.auth-switch a {
+  color: #7aa2ff;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 5px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(122,162,255,0.15);
+  transition: all 0.3s ease;
+}
+
+.auth-switch a:hover {
+  background: rgba(122,162,255,0.3);
+  color: #a8c1ff;
+}
+.card input,
+.card textarea {
+  color: black;      
+  background: #f9f9f9;  
+}
+.card input::placeholder,
+.card textarea::placeholder {
+  color: #555;  
+}
+.card p,
+.card h3,
+.card h1 {
+  color: black;
+}
+.card button {
+  background: #4CAF50;
+  color: rgb(8, 7, 7);
+}
+/* ===== FIXED ACHIEVEMENTS CARD ===== */
+.achievements {
+  background: rgba(255, 255, 255, 0.1);   /* glass look */
+  backdrop-filter: blur(12px);
+  border-radius: 15px;
+  padding: 20px;
+  color: white;   /* 👈 FORCE WHITE TEXT */
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* FORCE ALL TEXT INSIDE TO BE VISIBLE */
+.achievements h3,
+.achievements p {
+  color: white !important;
+  font-weight: 500;
+}
+
+/* Improve spacing */
+.achievements p {
+  margin: 8px 0;
+}
+.achievements {
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+/* ===== NAV RIGHT ===== */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* ===== TOGGLE BUTTON ===== */
+#themeToggle {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+}
+
+/* ===== LIGHT MODE ===== */
+.light-mode {
+  color: black;
+}
+
+/* Navbar in light mode */
+.light-mode .navbar {
+  background: rgba(255,255,255,0.9);
+}
+
+.light-mode .navbar a {
+  color: black;
+}
+
+/* Cards in light mode */
+.light-mode .card {
+  background: rgba(0,0,0,0.05);
+  color: black;
+}
+
+/* Body overlay fix */
+.light-mode::before {
+  background: rgba(255,255,255,0.6);
+}
+body {
+  transition: all 0.3s ease;
+}
+.card p {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.card p a {
+  margin-right: 5px;
+}
+/* CALENDAR GRID */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* DAY CARD */
+.calendar-card {
+    background: rgba(255,255,255,0.08);
+    padding: 15px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+/* TASK ITEM */
+.task-item {
+    background: rgba(255,255,255,0.1);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* STATUS COLORS */
+.task-item.done {
+    border-left: 5px solid #00ff88;
+}
+
+.task-item.overdue {
+    border-left: 5px solid red;
+}
+
+/* TEXT */
+.status.done {
+    color: #00ff88;
+}
+
+.status.pending {
+    color: #4da6ff;
+}
