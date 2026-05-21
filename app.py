@@ -286,6 +286,22 @@ def calendar():
         current_date=date.today()   # ✅ IMPORTANT
     )
 
+# ---------- ABOUT ----------
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+# ---------- CONTACT ----------
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        message = request.form['message']
+        # Handle form data (save to DB, send email, etc.)
+        return "Message sent successfully!"
+    return render_template('contact.html')
+
 
 # ---------- LOGOUT ----------
 @app.route('/logout')
